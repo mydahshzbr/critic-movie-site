@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Explore — critic.</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Navbar (same as index) -->
+<nav style="display:flex; justify-content:space-between; padding:16px 20px; background:transparent; position:absolute; top:0; left:0; width:100%; z-index:100;box-sizing: border-box;">
+    <div class="logo" style="font-family:Georgia, Cambria, 'Times New Roman', serif; font-size:24px; color:#F0B8B8;">
+        critic.
+        <span style="font-size:14px; color:#A2AE9D;">where films linger</span>
+    </div>
+    <div class="nav-links" style="font-family:Arial, Helvetica, sans-serif;">
+        <a href="index.html" style="margin:0 12px;">Home</a>
+        <a href="explore.html" style="margin:0 12px;">Explore</a>
+        <a href="diary.html" style="margin:0 12px;">Diary</a>
+        <a href="lists.html" style="margin:0 12px;">Lists</a>
+        <a href="about.html" style="margin:0 12px;">About</a>
+    </div>
+</nav>
+
+<!-- Explore Header -->
+<section style="padding:40px 20px;">
+  <h2>Explore Films</h2>
+  <p style="color:#A2AE9D; font-size:14px;">
+    Browse and discover films.
+  </p>
+</section>
+
+<!-- Explore Search -->
+<section style="padding:0 20px 20px;">
+  <input
+    type="text"
+    id="exploreSearch"
+    placeholder="Search films..."
+    style="width:100%; max-width:400px;"
+  >
+  <div id="exploreResults"></div>
+</section>
+
+<!-- Movie Grid -->
+<section style="padding:20px;">
+  <div id="exploreGrid" class="grid"></div>
+</section>
+
+<footer>
+  <p>© 2025 critic. — <em>where films linger</em></p>
+</footer>
+
+<script src="js/scripts.js"></script>
+<script src="js/explore.js"></script>
+</body>
+</html>

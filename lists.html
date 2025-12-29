@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lists — critic.</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav style="display:flex; justify-content:space-between; padding:16px 20px; background:transparent; position:absolute; top:0; left:0; width:100%; z-index:100;box-sizing: border-box;">
+    <div class="logo" style="font-family:Georgia, Cambria, 'Times New Roman', serif; font-size:24px; color:#F0B8B8;">
+        critic.
+        <span style="font-size:14px; color:#A2AE9D;">where films linger</span>
+    </div>
+    <div class="nav-links" style="font-family:Arial, Helvetica, sans-serif;">
+        <a href="index.html" style="margin:0 12px;">Home</a>
+        <a href="explore.html" style="margin:0 12px;">Explore</a>
+        <a href="diary.html" style="margin:0 12px;">Diary</a>
+        <a href="lists.html" style="margin:0 12px;">Lists</a>
+        <a href="about.html" style="margin:0 12px;">About</a>
+    </div>
+</nav>
+
+<section id="listGallery" class="list-page-container">
+  <div class="list-header-row">
+    <h1 class="page-title">Your Lists</h1>
+    <button id="showCreateForm" class="btn-main">Start a new list...</button>
+  </div>
+  
+  <div id="galleryGrid" class="gallery-grid">
+    </div>
+</section>
+
+<section id="listEditor" class="list-page-container hidden">
+  <h1 id="editorTitle" class="page-title">New List</h1>
+
+  <div class="list-form-container">
+    <div class="form-header-row">
+      <div class="form-col">
+        <div class="input-group">
+          <label><span class="bullet">•</span> Name</label>
+          <input type="text" id="listName">
+        </div>
+        <div class="input-group">
+          <label>Tags</label>
+          <input type="text" id="listTags" placeholder="e.g. top 10, horror">
+        </div>
+        <div class="input-group">
+          <label class="checkbox-label">
+            <input type="checkbox" id="isRanked"> Ranked list 
+          </label>
+        </div>
+      </div>
+      <div class="form-col">
+        <label>Description</label>
+        <textarea id="listDescription"></textarea>
+      </div>
+    </div>
+
+    <div class="list-action-bar">
+      <div class="search-wrap">
+        <button class="add-film-btn">ADD A FILM</button>
+        <input type="text" id="filmSearchInput" placeholder="Enter name of film...">
+        <div id="listSearchResults" class="search-dropdown hidden"></div>
+      </div>
+      
+      <div class="action-btns-right">
+        <button id="deleteListBtn" class="btn-delete hidden">DELETE</button>
+        <button id="cancelBtn" class="btn-text">CANCEL</button>
+        <button id="saveListBtn" class="btn-main">SAVE</button>
+      </div>
+    </div>
+
+    <div id="selectedFilmsContainer" class="list-content-area">
+      <div class="empty-state">
+        <h2>Your list is empty.</h2>
+        <p>Add films using the field above.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="js/scripts.js"></script>
+<script src="js/lists.js"></script>
+</body>
+</html>

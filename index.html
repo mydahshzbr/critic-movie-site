@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>critic. — where films linger</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+    /* Opening Page Layout & Animation Styles */
+    .opening-container {
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #54463A; /* Base brown */
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        transition: opacity 1s ease-out;
+    }
+
+    .opening-content {
+        text-align: center;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 1.5s ease-out forwards;
+    }
+
+    .opening-logo {
+        font-family: Georgia, serif;
+        font-size: 80px;
+        color: #F0B8B8; /* Soft pink */
+        margin-bottom: 0;
+        letter-spacing: -2px;
+    }
+
+    .opening-tagline {
+        font-family: Arial, sans-serif;
+        font-size: 18px;
+        color: #A2AE9D; /* Muted green */
+        margin-top: 10px;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+    }
+
+    .opening-cta {
+        margin-top: 40px;
+        opacity: 0;
+        animation: fadeIn 1s ease-in 1s forwards;
+    }
+
+    .enter-button {
+        padding: 12px 30px;
+        background-color: #C75F71; /* Accent pink */
+        color: #F0B8B8;
+        border-radius: 30px;
+        font-size: 14px;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        border: 1px solid transparent;
+        cursor: pointer;
+        display: inline-block;
+        text-decoration: none;
+    }
+
+    .enter-button:hover {
+        background-color: transparent;
+        border-color: #F0B8B8;
+        transform: scale(1.05);
+    }
+
+    /* Keyframe Animations */
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeIn {
+        to {
+            opacity: 1;
+        }
+    }
+
+    /* Hide splash screen helper */
+    .fade-out {
+        opacity: 0;
+        pointer-events: none;
+    }
+</style>
+</head>
+<body>
+
+<div id="splashScreen" class="opening-container">
+    <div class="opening-content">
+        <h1 class="opening-logo">critic.</h1>
+        <p class="opening-tagline">where films linger</p>
+        <div class="opening-cta">
+            <button type="button" id="enterSite" class="enter-button">Enter Diary</button>
+        </div>
+    </div>
+</div>
+
+<nav style="display:flex; justify-content:space-between; padding:16px 20px; background:transparent; position:absolute; top:0; left:0; width:100%; z-index:100;box-sizing: border-box;">
+    <div class="logo" style="font-family:Georgia, Cambria, 'Times New Roman', serif; font-size:24px; color:#F0B8B8;">
+        critic.
+        <span style="font-size:14px; color:#A2AE9D;">where films linger</span>
+    </div>
+    <div class="nav-links" style="font-family:Arial, Helvetica, sans-serif;">
+        <a href="index.html" style="margin:0 12px;">Home</a>
+        <a href="explore.html" style="margin:0 12px;">Explore</a>
+        <a href="diary.html" style="margin:0 12px;">Diary</a>
+        <a href="lists.html" style="margin:0 12px;">Lists</a>
+        <a href="about.html" style="margin:0 12px;">About</a>
+    </div>
+</nav>
+
+<section class="hero" style="background:url('assets/images/gwh1.jpg') center/cover no-repeat;">
+     <div class="hero-text">Track films you’ve watched.<br>Save those you want to see.</div>
+</section>
+
+<section style="padding:20px;">
+    <h2>Featured Movies</h2>
+    <div id="featuredGrid" class="grid"></div>
+</section>
+
+<section class="features-section">
+  <div class="features-container">
+    <h2 class="features-title">critic. lets you…</h2>
+    <div class="features-grid">
+        <div class="feature-card"><p>Track films you’ve watched and revisit the ones that stayed with you.</p></div>
+        <div class="feature-card"><p>Show love for films you adore with simple ratings and reactions.</p></div>
+        <div class="feature-card"><p>Write short thoughts and reflections — personal, not performative.</p></div>
+        <div class="feature-card"><p>Rate films on a five-star scale to record how they made you feel.</p></div>
+        <div class="feature-card"><p>Keep a diary of your movie watching, one entry at a time.</p></div>
+        <div class="feature-card"><p>Save films you want to watch later and build quiet watchlists.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+    <p>© 2025 critic. — <em>where films linger</em></p>
+    <div class="social-icons">
+        <span>&#x1F426;</span>
+        <span>&#x1F3AC;</span>
+        <span>&#x1F4FA;</span>
+    </div>
+</footer>
+
+<script src="js/scripts.js"></script>
+<script>
+    const splash = document.getElementById('splashScreen');
+    const enterBtn = document.getElementById('enterSite');
+
+    // Hide immediately if already visited in this session
+    if (sessionStorage.getItem('splashSeen')) {
+        splash.style.display = 'none';
+    }
+
+    // Button click logic
+    enterBtn.onclick = () => {
+        sessionStorage.setItem('splashSeen', 'true');
+        splash.style.opacity = '0';
+        // Wait for fade animation, then remove from view
+        setTimeout(() => {
+            splash.style.display = 'none';
+        }, 500);
+    };
+
+    // Grid population logic
+    const featuredGrid = document.getElementById('featuredGrid');
+    if (featuredGrid && typeof movies !== 'undefined') {
+        movies.forEach(m => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+                <a href="movie.html?id=${m.id}"><img src="${m.poster}"></a>
+                <div class="title">${m.title}</div>`;
+            featuredGrid.appendChild(card);
+        });
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Movie Details — critic.</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="movie">
+
+<!-- Navbar -->
+<nav style="display:flex; justify-content:space-between; padding:16px 20px; background:transparent; position:absolute; top:0; left:0; width:100%; z-index:100;box-sizing: border-box;">
+    <div class="logo" style="font-family:Georgia, Cambria, 'Times New Roman', serif; font-size:24px; color:#F0B8B8;">
+        critic.
+        <span style="font-size:14px; color:#A2AE9D;">where films linger</span>
+    </div>
+    <div class="nav-links" style="font-family:Arial, Helvetica, sans-serif;">
+        <a href="index.html" style="margin:0 12px;">Home</a>
+        <a href="explore.html" style="margin:0 12px;">Explore</a>
+        <a href="diary.html" style="margin:0 12px;">Diary</a>
+        <a href="lists.html" style="margin:0 12px;">Lists</a>
+        <a href="about.html" style="margin:0 12px;">About</a>
+    </div>
+</nav>
+
+<!-- Movie Details -->
+<div id="movieBackdrop" class="movie-backdrop">
+  <div class="backdrop-overlay"></div>
+</div>
+
+<section class="movie-content-wrapper">
+  <div class="movie-layout">
+    <div class="movie-poster">
+      <img id="moviePoster" src="" alt="Movie Poster">
+    </div>
+    <div class="movie-info">
+      <h1 id="movieTitle"></h1>
+      <p id="movieDescription"></p>
+      <button id="openLog">Log / Review</button>
+    </div>
+  </div>
+</section>
+
+<!-- Modal (copied from add.html) -->
+<div id="logModal" class="modal hidden">
+  <div class="modal-content compact">
+    
+    <div class="modal-header">
+      <button id="closeModal" class="back-btn">BACK</button>
+      <h3 class="modal-title-center">I watched...</h3>
+      <div style="width: 60px;"></div> </div>
+
+    <div class="modal-body">
+      <div class="modal-left">
+        <img id="modalPoster" src="" />
+      </div>
+
+      <div class="modal-right">
+        <h2 id="modalTitle"></h2>
+
+        <div class="modal-options-row">
+          <label class="checkbox-wrapper">
+            <input type="checkbox" id="addToDiary" checked> <span>Watched on</span>
+            <input type="date" id="watchDate">
+          </label>
+          <label class="checkbox-wrapper">
+            <input type="checkbox" id="firstTime"> <span>I've watched this before</span>
+          </label>
+        </div>
+
+        <textarea id="reviewInput" placeholder="Add a review..."></textarea>
+
+        <div class="modal-footer-row">
+          <div class="footer-col tags-col">
+            <label>Tags <span>Press Tab to complete, Enter to create</span></label>
+            <input type="text" id="logTags" placeholder="eg. netflix">
+          </div>
+          
+          <div class="footer-col rating-col">
+            <label>Rating</label>
+            <div class="stars" id="starContainer">
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+            </div>
+          </div>
+
+          <div class="footer-col like-col">
+            <label>Like</label>
+            <span id="likeBtn" class="like-heart">❤</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button id="saveLog" class="save-btn">SAVE</button>
+    </div>
+
+  </div>
+</div>
+</div>
+<footer>
+    <p>© 2025 critic. — <em>where films linger</em></p>
+</footer>
+
+<!-- Scripts -->
+<script src="js/scripts.js"></script>
+<script src="js/add.js"></script>
+
+</body>
+</html>
